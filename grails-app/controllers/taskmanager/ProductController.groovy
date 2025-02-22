@@ -20,14 +20,9 @@ class ProductController {
         }
     }
 
-      def delete(Long id) {
+    def delete(Long id) {
         def product = Product.get(id)
-        // if (!product) {
-        //     flash.message = "Product not found!"
-        //     redirect(action: "index")
-        //     return
-        // }
-        // [product: product] // Pass product to delete.gsp
+
         if (product) {
             product.delete(flush: true)
             flash.message = "Product deleted successfully!"
@@ -37,11 +32,22 @@ class ProductController {
         redirect(action: "index")
     }
 
-    def confirmDelete() {
-        def product = Product.get(params.id)
+    def edit(Long id) {
+        def product = Product.get(id)
+        // or Product.get(params.id)
+        [product:product]
+    }
+
+    def update(Long id) {
+        def product = Product.get(id)
+
         if (product) {
-            product.delete(flush: true)
-            flash.message = "Product deleted successfully!"
+            product.name = params.name
+            product.code = params.code
+            product.price = params.price?.toInteger()
+
+            product.save(flush: true)
+            flash.message = "Product updated successfully!"
         } else {
             flash.message = "Product not found!"
         }

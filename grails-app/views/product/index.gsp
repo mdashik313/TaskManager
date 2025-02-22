@@ -6,7 +6,7 @@
         <th>Name</th>
         <th>Code</th>
         <th>Price</th>
-         <th>Action</th>
+        <th>Action</th>
         
     </tr>
     <g:each var="product" in="${products}">
@@ -14,10 +14,9 @@
                 <td>${product.name}</td>
                 <td>${product.code}</td>
                 <td>${product.price}</td>
-                <td><g:link  action="delete" id="${product.id}">Delete</g:link>
-</td>
-                
-                
+                <td><g:link  action="delete" id="${product.id}">Delete</g:link> |
+                    <g:link  action="edit" id="${product.id}">Edit</g:link>
+                </td>
             </tr>
     </g:each>
 </table>
