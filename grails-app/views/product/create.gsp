@@ -12,6 +12,7 @@
     <label> Price: </label>
     <g:textField name="price" required="true" /> <br>
     <g:submitButton name="add product" />
+    
  </g:form>
 
 </body>
